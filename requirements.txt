@@ -1,16 +1,15 @@
 absl-py==1.4.0
 aiohttp==3.8.4
 aiosignal==1.3.1
-#anaconda-client==1.2.2
-#anaconda-navigator==2.0.3
-anyio==4.5.2
-#apache-beam==2.49.0rc1
+# anaconda-client==1.2.2  # Not needed for production
+# anaconda-navigator==2.0.3  # Not needed for production
+# apache-beam==2.49.0rc1  # Unlikely to be used
 appdirs==1.4.4
-arrow==1.3.0
+# arrow==1.3.0  # Jupyter-related, not needed
 attrs==24.2.0
-babel==2.16.0
-backcall==1611930011877
-beautifulsoup4==1610988766420
+# babel==2.16.0  # Likely not needed unless locale management is involved
+# backcall==1611930011877  # Part of Jupyter, not needed
+# beautifulsoup4==1610988766420  # Unnecessary unless doing web scraping
 boto3==1.35.20
 botocore==1.35.20
 cachetools==1619597386817
@@ -19,15 +18,15 @@ charset-normalizer==1630003229654
 click==8.1.7
 cohere==5.9.2
 coloredlogs==15.0.1
-dash==2.18.2
-dask==1617390489108
+# dash==2.18.2  # Only keep if hosting dashboards with Dash
+# dask==1617390489108  # Unnecessary unless doing parallel computing
 flask==3.0.3
-huggingface-hub==0.24.7
-jupyter==1.0.0
+# huggingface-hub==0.24.7  # Only keep if using Hugging Face models
+# jupyter==1.0.0  # Not needed for production
 keras==2.13.1
 lvis==0.5.3
-Markdown==1614364121613
-matplotlib==3.7.2
+# Markdown==1614364121613  # Unnecessary unless rendering markdown
+matplotlib==3.7.2  # Comment out if not used in visualization
 numpy==1.24.3
 pandas==2.1.1
 Pillow==10.1.0
