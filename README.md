@@ -1,2 +1,0 @@
-# defect-detection-WebApp
- 
