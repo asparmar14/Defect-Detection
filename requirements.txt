@@ -23,11 +23,11 @@ coloredlogs==15.0.1
 flask==3.0.3
 # huggingface-hub==0.24.7  # Only keep if using Hugging Face models
 # jupyter==1.0.0  # Not needed for production
-keras==2.13.1
-lvis==0.5.3
+#keras==2.13.1
+#lvis==0.5.3
 # Markdown==1614364121613  # Unnecessary unless rendering markdown
-matplotlib==3.7.2  # Comment out if not used in visualization
-numpy==1.24.3
+#matplotlib==3.7.2  # Comment out if not used in visualization
+#numpy==1.24.3
 pandas==2.1.1
 Pillow==10.1.0
 pip==23.2.1
