@@ -13,7 +13,7 @@ numpy==1.24.3  # Ensure compatibility with PyTorch
 gdown<=5.2.0
 
 # Removed dependencies (not needed for your object detection app)
-# pandas==2.1.1
+pandas==2.1.1
 # scikit-learn==1.3.0
 # scipy==1.12.0
 
