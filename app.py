@@ -15,12 +15,8 @@ def find_model():
 
 # Load the YOLO model
 model_name = find_model()
-model = torch.load(
-    'local', 
-    'custom', 
-    path='https://drive.google.com/drive/folders/1KZ8xWr7fH1U0nyDlrBA5AAq8c4D02IDt?usp=drive_link', 
-    source='local'
-)
+model_path = os.path.join(os.getcwd(), model_name)  # Get full path to model
+model = torch.load(model_path)
 model.eval()
 
 # Get predictions from the model
