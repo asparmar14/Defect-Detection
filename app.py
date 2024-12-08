@@ -15,7 +15,7 @@ def find_model():
 
 # Load the YOLO model
 model_name = find_model()
-model = torch.hub.load(
+model = torch.load(
     'local', 
     'custom', 
     path='https://drive.google.com/drive/folders/1KZ8xWr7fH1U0nyDlrBA5AAq8c4D02IDt?usp=drive_link', 
