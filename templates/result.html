@@ -20,21 +20,22 @@
   </style>
   <link rel="stylesheet" href="/static/style.css">
 
-  <title>Image Prediction using PyTorch</title>
+  <title>Image Predictions</title>
 </head>
 
 <body class="text-center">
-  <form class="form-signin card_res mb-6" method=post enctype=multipart/form-data>
+  <form class="form-signin card_res mb-6" method="post" enctype="multipart/form-data">
     <img class="mb-4" src="{{url_for('static', filename='new_logo.jpg')}}" width="120">
     <h1 class="h3 mb-3 font-weight-normal">Prediction:</h1>
 
-    <img class="img-fluid" src={{ url_for('static', filename="image0.jpg" ) }} alt="User_Image" max-width="100%"
-      height="auto">
+    <img class="img-fluid" src="{{ url_for('static', filename='image0.jpg') }}" alt="User Image" style="max-width: 100%; height: auto;">
 
-    <button class="btn mb-4"> Test Another Image </button>
-    <p class="mt-5 mb-3 text-muted">Built using Pytorh and Flask</p>
+    <!-- Download Button -->
+    <a href="{{ url_for('static', filename='image0.jpg') }}" class="btn btn-primary mb-4" download="predicted_image.jpg">Download Detected Image</a>
+    
+    <button class="btn mb-4">Test Another Image</button>
+    <p class="mt-5 mb-3 text-muted">Built using PyTorch and Flask</p>
   </form>
-
 
   <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -47,10 +48,6 @@
     crossorigin="anonymous"></script>
   <script src="static/script.js"></script>
 
-  <div class="alert alert-warning" role="alert">
-    The image is saved in static/image0.jpg. Note that after an new inference, the result from the last run will be
-    erased.
-  </div>
   <div class="alert alert-success" role="alert"> Running with model: {{ model_name }} </div>
 </body>
 
