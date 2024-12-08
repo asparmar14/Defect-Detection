@@ -10,6 +10,7 @@ torchvision<=0.20.1
 # Utility libraries
 requests==2.31.0  # Used in torch.hub for downloading models
 numpy==1.24.3  # Ensure compatibility with PyTorch
+gdown<=5.2.0
 
 # Removed dependencies (not needed for your object detection app)
 # pandas==2.1.1
