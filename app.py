@@ -15,8 +15,7 @@ def find_model():
 
 # Load the YOLO model
 model_name = find_model()
-model_path = os.path.join(os.getcwd(), model_name)  # Get full path to model
-model = torch.load(model_path)
+model = torch.hub.load("WongKinYiu/yolov7", 'custom', model_name)
 model.eval()
 
 # Get predictions from the model
