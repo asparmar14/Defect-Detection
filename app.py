@@ -14,6 +14,8 @@ def find_model():
     raise FileNotFoundError("Please place a YOLO model file in this directory!")
 
 # Load the YOLO model
+# Initialize the model globally
+model = torch.hub.load("WongKinYiu/yolov7", "custom", "model_name", trust_repo=True)
 #model_name = find_model()
 #model = torch.hub.load("WongKinYiu/yolov7", 'custom', model_name, trust_repo=True)
 #model.eval()
