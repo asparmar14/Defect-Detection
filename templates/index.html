@@ -24,18 +24,13 @@
 </head>
 
 <body class="text-center">
-  <div class="alert alert-warning" role="alert">
-    The image is saved in static/image0.jpg. Note that after an new inference, the result from the last run will be
-    erased.
-  </div>
-  <div class="alert alert-success" role="alert"> Running with model: {{ model_name }} </div>
-  <form class="form-signin card mb-6" method=post enctype=multipart/form-data>    
-    <div class="row" padding:15px>
-      <div class="column" width:"50%">
-        <img src="static/CSIR_logo.png" style="border-radius:20%" width="120">
+  <form class="form-signin card mb-6" method="post" enctype="multipart/form-data">    
+    <div class="row" style="padding:15px;">
+      <div class="column" style="width:50%;">
+        <img src="static/CSIR_logo.png" style="border-radius:20%;" width="120">
       </div>
-      <div class="column" width:"50%">
-        <img src="static/CBRI_logo.png" style="border-radius:20%" width="100">
+      <div class="column" style="width:50%;">
+        <img src="static/CBRI_logo.png" style="border-radius:20%;" width="100">
       </div>
       <style>
         .column {
@@ -47,15 +42,17 @@
     </div>  
     
     <h1 class="h3 mb-3 font-weight-normal">Building Defects Detector</h1>
-    <input type="file" name="file" class="form-control-file" id="inputfile">
+    <div class="alert alert-success" role="alert">
+      Upload a JPEG image to detect defects. The processed image will be available for download.
+    </div>
+    <input type="file" name="file" class="form-control-file" id="inputfile" required>
     <br />
-    <button>
-      <span class="box">
-        Upload!
-      </span>
+    <button type="submit" class="btn btn-primary">
+      Upload and Process
     </button>
     <p class="mt-5 mb-3 text-muted">Built using Pytorch and Flask</p>
   </form>
+
   <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -67,23 +64,23 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript">
     $('#inputfile').bind('change', function () {
-      let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
+      let fileSize = this.files[0].size / 1024 / 1024; // This gives size in MB
       if (fileSize > 1) {
         $("#inputfile").val(null);
-        alert('file is too big. images more than 1MB are not allowed')
-        return
+        alert('File is too big. Images larger than 1MB are not allowed.');
+        return;
       }
 
       let ext = $('#inputfile').val().split('.').pop().toLowerCase();
       if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
         $("#inputfile").val(null);
-        alert('only jpeg/jpg files are allowed!');
+        alert('Only JPEG/JPG files are allowed!');
       }
     });
   </script>
 </body>
 
-<!-- Github Ribbon Start-->
+<!-- Github Ribbon -->
 <a href="https://github.com/asparmar14" class="github-corner"><svg width="160" height="160"
     viewBox="0 0 250 250" style="fill:#0E2E3B; color:#FFFFFF; position: absolute; top: 0; border: 0; right: 0;">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -96,34 +93,27 @@
   </svg></a>
 <style>
   .github-corner:hover .octo-arm {
-    animation: octocat-wave 560ms ease-in-out
+    animation: octocat-wave 560ms ease-in-out;
   }
 
   @keyframes octocat-wave {
-
-    0%,
-    100% {
-      transform: rotate(0)
+    0%, 100% {
+      transform: rotate(0);
     }
-
-    20%,
-    60% {
-      transform: rotate(-25deg)
+    20%, 60% {
+      transform: rotate(-25deg);
     }
-
-    40%,
-    80% {
-      transform: rotate(10deg)
+    40%, 80% {
+      transform: rotate(10deg);
     }
   }
 
   @media (max-width:500px) {
     .github-corner:hover .octo-arm {
-      animation: none
+      animation: none;
     }
-
     .github-corner .octo-arm {
-      animation: octocat-wave 560ms ease-in-out
+      animation: octocat-wave 560ms ease-in-out;
     }
   }
 </style>
