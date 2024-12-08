@@ -14,9 +14,9 @@ def find_model():
     raise FileNotFoundError("Please place a YOLO model file in this directory!")
 
 # Load the YOLO model
-model_name = find_model()
-model = torch.hub.load("WongKinYiu/yolov7", 'custom', model_name, trust_repo=True)
-model.eval()
+#model_name = find_model()
+#model = torch.hub.load("WongKinYiu/yolov7", 'custom', model_name, trust_repo=True)
+#model.eval()
 
 # Get predictions from the model
 def get_prediction(img_bytes):
