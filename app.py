@@ -22,7 +22,7 @@ if not os.path.exists('last_best.pt'):
     download_model()
 
 # Load the YOLO model
-model = torch.load('last_best.pt')
+model = 'last_best.pt'
 model.eval()  # Set the model to evaluation mode
 
 # Get predictions from the model
