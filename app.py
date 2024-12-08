@@ -57,6 +57,3 @@ def handle_video():
 def web_cam():
     # some code to be implemented later
     pass
-
-if __name__ == "__main__":
-    app.run(debug=False,host="0.0.0.0)
