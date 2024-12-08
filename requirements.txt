@@ -5,6 +5,7 @@ gunicorn==22.0.0  # For production server
 # PyTorch and model-related dependencies
 torch==2.0.1  # Ensure compatibility with your environment
 Pillow==10.1.0  # For image processing
+torchvision<=0.20.1
 
 # Utility libraries
 requests==2.31.0  # Used in torch.hub for downloading models
