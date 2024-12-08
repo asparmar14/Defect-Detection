@@ -15,7 +15,7 @@ def find_model():
 
 # Load the YOLO model
 # Initialize the model globally
-model = torch.hub.load("WongKinYiu/yolov7", "custom", "model_name", trust_repo=True)
+model = torch.load('last_best.pt') 
 #model_name = find_model()
 #model = torch.hub.load("WongKinYiu/yolov7", 'custom', model_name, trust_repo=True)
 #model.eval()
