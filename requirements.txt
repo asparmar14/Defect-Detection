@@ -27,6 +27,7 @@ coloredlogs==15.0.1
 tensorflow<=2.17.0  # Replace with the version you need
 tensorflow-datasets==4.9.0
 tensorboard<2.18.0
+opencv-python<=4.10.0.84
 
 # Asynchronous processing (remove if unused)
 aiohttp<=3.11.9
