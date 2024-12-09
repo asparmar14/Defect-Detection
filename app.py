@@ -31,7 +31,7 @@ except Exception as e:
 def get_prediction(img_bytes):
     try:
         img = Image.open(io.BytesIO(img_bytes))
-        results = model([img], size=640)  # Includes Non-Maximum Suppression (NMS)
+        results = model([img], size=416)  # Includes Non-Maximum Suppression (NMS)
 
         # Save processed image to a BytesIO buffer
         buffer = io.BytesIO()
