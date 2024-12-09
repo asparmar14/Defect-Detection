@@ -16,9 +16,6 @@ def find_model():
 # Load the YOLO model
 try:
     model_name = find_model()
-    model = model_name
-    model.eval()
-    '''
     model = torch.hub.load(
         "WongKinYiu/yolov7",  # GitHub repo
         'custom',             # Custom model type
@@ -27,7 +24,6 @@ try:
         force_reload=True
     )
     model.eval()
-    '''
 except Exception as e:
     raise RuntimeError(f"Error loading the model: {e}")
 
