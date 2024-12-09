@@ -6,9 +6,6 @@ from flask import Flask, request, send_file, render_template
 
 app = Flask(__name__)
 
-# Set your GitHub token
-os.environ["GITHUB_TOKEN"] = "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"  # Replace with your token
-
 # Automatically find the YOLO model in the directory
 def find_model():
     for f in os.listdir():
@@ -19,13 +16,18 @@ def find_model():
 # Load the YOLO model
 try:
     model_name = find_model()
+    model = model_name
+    model.eval()
+    '''
     model = torch.hub.load(
         "WongKinYiu/yolov7",  # GitHub repo
         'custom',             # Custom model type
         model_name,           # Model name or path
-        trust_repo=True       # Trust the repository
+        trust_repo=True,       # Trust the repository
+        force_reload=True
     )
     model.eval()
+    '''
 except Exception as e:
     raise RuntimeError(f"Error loading the model: {e}")
 
