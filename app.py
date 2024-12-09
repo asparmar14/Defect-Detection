@@ -6,6 +6,9 @@ from flask import Flask, request, send_file, render_template
 
 app = Flask(__name__)
 
+# Set your GitHub token
+os.environ["GITHUB_TOKEN"] = "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"  # Replace with your token
+
 # Automatically find the YOLO model in the directory
 def find_model():
     for f in os.listdir():
@@ -14,20 +17,31 @@ def find_model():
     raise FileNotFoundError("Please place a YOLO model file in this directory!")
 
 # Load the YOLO model
-model_name = find_model()
-model = torch.hub.load("WongKinYiu/yolov7", 'custom', model_name, trust_repo=True)
-model.eval()
+try:
+    model_name = find_model()
+    model = torch.hub.load(
+        "WongKinYiu/yolov7",  # GitHub repo
+        'custom',             # Custom model type
+        model_name,           # Model name or path
+        trust_repo=True       # Trust the repository
+    )
+    model.eval()
+except Exception as e:
+    raise RuntimeError(f"Error loading the model: {e}")
 
 # Get predictions from the model
 def get_prediction(img_bytes):
-    img = Image.open(io.BytesIO(img_bytes))
-    results = model([img], size=640)  # Includes Non-Maximum Suppression (NMS)
-    
-    # Save processed image to a BytesIO buffer
-    buffer = io.BytesIO()
-    results.save(buffer, format="JPEG")
-    buffer.seek(0)
-    return buffer
+    try:
+        img = Image.open(io.BytesIO(img_bytes))
+        results = model([img], size=640)  # Includes Non-Maximum Suppression (NMS)
+
+        # Save processed image to a BytesIO buffer
+        buffer = io.BytesIO()
+        results.save(buffer, format="JPEG")
+        buffer.seek(0)
+        return buffer
+    except Exception as e:
+        raise RuntimeError(f"Error during prediction: {e}")
 
 @app.route('/', methods=['GET', 'POST'])
 def predict():
@@ -38,16 +52,19 @@ def predict():
         if not file:
             return "No file selected", 400
 
-        img_bytes = file.read()
-        buffer = get_prediction(img_bytes)
+        try:
+            img_bytes = file.read()
+            buffer = get_prediction(img_bytes)
 
-        # Send the processed image with a download option
-        return send_file(
-            buffer,
-            mimetype='image/jpeg',
-            as_attachment=True,
-            download_name='detected_image.jpg'
-        )
+            # Send the processed image with a download option
+            return send_file(
+                buffer,
+                mimetype='image/jpeg',
+                as_attachment=True,
+                download_name='detected_image.jpg'
+            )
+        except Exception as e:
+            return f"Error processing the file: {e}", 500
 
     # Render the upload form
     return render_template('index.html')
